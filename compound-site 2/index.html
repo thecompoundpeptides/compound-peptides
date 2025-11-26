@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Compound - Premium Peptide Therapy & Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header/Nav */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00d9ff;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d9ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            border-bottom: 3px solid #ff005a;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #00d9ff, #ff005a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .hero-images img {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid #00d9ff;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: 2px solid;
+        }
+
+        .btn-primary {
+            background: #00d9ff;
+            color: #0a0a0a;
+            border-color: #00d9ff;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: #00d9ff;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: #ff005a;
+            color: #ffffff;
+            border-color: #ff005a;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: #ff005a;
+            box-shadow: 0 0 20px rgba(255, 0, 90, 0.5);
+        }
+
+        /* Peptide Library Section */
+        .peptide-library {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00d9ff;
+        }
+
+        .peptide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .peptide-card {
+            background: #1a1a2e;
+            border: 2px solid #00d9ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .peptide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+            border-color: #ff005a;
+        }
+
+        .peptide-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .peptide-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #00d9ff;
+        }
+
+        .peptide-card p {
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .peptide-card .category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(255, 0, 90, 0.2);
+            border: 1px solid #ff005a;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #ff005a;
+            margin-bottom: 1rem;
+        }
+
+        /* Email Signup */
+        .email-signup {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 3px solid #00d9ff;
+            border-bottom: 3px solid #ff005a;
+        }
+
+        .email-signup h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00d9ff;
+        }
+
+        .email-signup p {
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #00d9ff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .email-form input::placeholder {
+            color: #999;
+        }
+
+        .email-form button {
+            padding: 1rem 2rem;
+            background: #ff005a;
+            color: #ffffff;
+            border: 2px solid #ff005a;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .email-form button:hover {
+            background: transparent;
+            box-shadow: 0 0 20px rgba(255, 0, 90, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid #00d9ff;
+        }
+
+        footer p {
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="images/logo-transparent.jpeg" alt="The Compound Logo" class="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#peptide-library">Peptides</a></li>
+                <li><a href="#email-signup">Subscribe</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>WHERE PERFORMANCE IS ENGINEERED</h1>
+        <p>Evidence-based peptide therapy for athletes, biohackers, and performance-focused individuals who demand results.</p>
+        
+        <div class="cta-buttons">
+            <a href="shop.html" class="btn btn-primary">Shop Peptides</a>
+            <a href="#peptide-library" class="btn btn-secondary">Learn More</a>
+        </div>
+
+        <div class="hero-images">
+            <img src="images/hero-athlete-dna-man.jpeg" alt="Male Athlete DNA">
+            <img src="images/hero-athlete-dna-woman.jpeg" alt="Female Athlete DNA">
+        </div>
+    </section>
+
+    <section id="peptide-library" class="peptide-library">
+        <h2 class="section-title">Peptide Library</h2>
+        <p style="text-align: center; color: #ccc; margin-bottom: 3rem; font-size: 1.1rem;">Click any peptide to learn about benefits, dosing protocols, and research backing.</p>
+        
+        <div class="peptide-grid">
+            <a href="bpc-157.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_1.jpeg" alt="BPC-157">
+                    <span class="category">Healing & Recovery</span>
+                    <h3>BPC-157</h3>
+                    <p>Accelerates tissue repair and reduces inflammation</p>
+                </div>
+            </a>
+
+            <a href="tb-500.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_2.jpeg" alt="TB-500">
+                    <span class="category">Injury Recovery</span>
+                    <h3>TB-500</h3>
+                    <p>Promotes healing and improves flexibility</p>
+                </div>
+            </a>
+
+            <a href="semaglutide.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_3.jpeg" alt="Semaglutide">
+                    <span class="category">Weight Management</span>
+                    <h3>Semaglutide</h3>
+                    <p>GLP-1 agonist for appetite control and fat loss</p>
+                </div>
+            </a>
+
+            <a href="tirzepatide.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_1.jpeg" alt="Tirzepatide">
+                    <span class="category">Weight Management</span>
+                    <h3>Tirzepatide</h3>
+                    <p>Dual GIP/GLP-1 agonist for superior weight loss</p>
+                </div>
+            </a>
+
+            <a href="cjc-1295.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_2.jpeg" alt="CJC-1295">
+                    <span class="category">Growth Hormone</span>
+                    <h3>CJC-1295</h3>
+                    <p>Increases GH and IGF-1 production</p>
+                </div>
+            </a>
+
+            <a href="ipamorelin.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_3.jpeg" alt="Ipamorelin">
+                    <span class="category">Growth Hormone</span>
+                    <h3>Ipamorelin</h3>
+                    <p>Gentle GH secretagogue with minimal side effects</p>
+                </div>
+            </a>
+
+            <a href="nad.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_1.jpeg" alt="NAD+">
+                    <span class="category">Anti-Aging</span>
+                    <h3>NAD+</h3>
+                    <p>Cellular energy and DNA repair</p>
+                </div>
+            </a>
+
+            <a href="mots-c.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_2.jpeg" alt="MOTS-c">
+                    <span class="category">Metabolic</span>
+                    <h3>MOTS-c</h3>
+                    <p>Mitochondrial peptide for energy and fat loss</p>
+                </div>
+            </a>
+
+            <a href="tesamorelin.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_3.jpeg" alt="Tesamorelin">
+                    <span class="category">Fat Loss</span>
+                    <h3>Tesamorelin</h3>
+                    <p>Reduces visceral adipose tissue</p>
+                </div>
+            </a>
+
+            <a href="sermorelin.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_1.jpeg" alt="Sermorelin">
+                    <span class="category">Growth Hormone</span>
+                    <h3>Sermorelin</h3>
+                    <p>GHRH analog for natural GH release</p>
+                </div>
+            </a>
+
+            <a href="aod-9604.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_2.jpeg" alt="AOD-9604">
+                    <span class="category">Fat Loss</span>
+                    <h3>AOD-9604</h3>
+                    <p>Fat-burning fragment of HGH</p>
+                </div>
+            </a>
+
+            <a href="thymosin-alpha-1.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_3.jpeg" alt="Thymosin Alpha-1">
+                    <span class="category">Immune Support</span>
+                    <h3>Thymosin Alpha-1</h3>
+                    <p>Immune modulation and anti-viral properties</p>
+                </div>
+            </a>
+
+            <a href="ghk-cu.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_1.jpeg" alt="GHK-Cu">
+                    <span class="category">Anti-Aging</span>
+                    <h3>GHK-Cu</h3>
+                    <p>Skin rejuvenation and wound healing</p>
+                </div>
+            </a>
+
+            <a href="epithalon.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_2.jpeg" alt="Epithalon">
+                    <span class="category">Longevity</span>
+                    <h3>Epithalon</h3>
+                    <p>Telomerase activator for cellular longevity</p>
+                </div>
+            </a>
+
+            <a href="selank.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_3.jpeg" alt="Selank">
+                    <span class="category">Cognitive</span>
+                    <h3>Selank</h3>
+                    <p>Anti-anxiety and cognitive enhancement</p>
+                </div>
+            </a>
+
+            <a href="semax.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_1.jpeg" alt="Semax">
+                    <span class="category">Cognitive</span>
+                    <h3>Semax</h3>
+                    <p>Neuroprotection and mental clarity</p>
+                </div>
+            </a>
+
+            <a href="melanotan-2.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_2.jpeg" alt="Melanotan II">
+                    <span class="category">Tanning & Libido</span>
+                    <h3>Melanotan II</h3>
+                    <p>Melanin production and libido enhancement</p>
+                </div>
+            </a>
+
+            <a href="pt-141.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_3.jpeg" alt="PT-141">
+                    <span class="category">Sexual Health</span>
+                    <h3>PT-141</h3>
+                    <p>Enhances sexual desire and function</p>
+                </div>
+            </a>
+
+            <a href="dihexa.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_1.jpeg" alt="Dihexa">
+                    <span class="category">Cognitive</span>
+                    <h3>Dihexa</h3>
+                    <p>Neurogenesis and cognitive enhancement</p>
+                </div>
+            </a>
+
+            <a href="kisspeptin.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_2.jpeg" alt="Kisspeptin">
+                    <span class="category">Hormone</span>
+                    <h3>Kisspeptin</h3>
+                    <p>Reproductive hormone regulation</p>
+                </div>
+            </a>
+
+            <a href="pentosan.html" style="text-decoration: none;">
+                <div class="peptide-card">
+                    <img src="images/vials-cyan-pink_3.jpeg" alt="Pentosan">
+                    <span class="category">Joint Health</span>
+                    <h3>Pentosan</h3>
+                    <p>Joint protection and cartilage support</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="email-signup" class="email-signup">
+        <h2>Stay Updated on Peptide Research</h2>
+        <p>Get the latest peptide research, exclusive offers, and expert tips delivered to your inbox.</p>
+        <form class="email-form" action="#" method="POST">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 The Compound. Premium Peptide Therapy & Education.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">For educational purposes only. Consult a healthcare provider before use.</p>
+    </footer>
+</body>
+</html>
